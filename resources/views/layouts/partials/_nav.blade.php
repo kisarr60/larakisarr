@@ -28,8 +28,8 @@
                 <a class="dropdown-item" href="https://laratchat.com">LaraTchat</a>
               </div>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/contact">Contact</a>
+            <li class="nav-item {{set_active_route('contact_path')}}">
+              <a class="nav-link" href="{{ route('contact_path')}}">Contact</a>
             </li>
             <span class="navbar-text"> | IbouS@rr-Web  |</span>
           </ul>
