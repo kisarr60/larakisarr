@@ -1,4 +1,4 @@
-@extends('layouts.default')
+@extends('layouts.default', ['title' => 'Accueil'])
 @section('content')
 	<div class="container text-center">
     	<h1>Map here !!</h1>
