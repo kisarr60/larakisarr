@@ -9,12 +9,12 @@
         <div class="collapse navbar-collapse" id="navbarsExampleDefault">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-              <a class="nav-link" href="{{ route('root_path')}}">Home <span class="sr-only">(current)</span></a>
+              <a class="nav-link {{set_active_route('root_path')}}" href="{{ route('root_path')}}">Home <span class="sr-only">(current)</span></a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item {{set_active_route('about_path')}}">
               <a class="nav-link" href="{{ route('about_path')}}">About</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item {{set_active_route('artisan_path')}}">
               <a class="nav-link" href="/artisans">Artisans</a>
             </li>
             <li class="nav-item dropdown">
@@ -31,6 +31,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/contact">Contact</a>
             </li>
+            <span class="navbar-text"> | IbouS@rr-Web  |</span>
           </ul>
           <ul class="navbar-nav navbar-right">
             <li class="nav-item">
