@@ -4,7 +4,7 @@ if(! function_exists('page_title'))
 {
 	function page_title($title)
 	{
-		$base_title = 'Larakisarr - List of Artisans';
+		$base_title = config('app.name').' - List of Artisans';
 
 		if($title == '')
 		{
