@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\ContactRequest;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\ContactMessageCreated;
+use Flashy;
 
 class ContactsController extends Controller
 {
@@ -32,9 +36,16 @@ class ContactsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ContactRequest $request)
     {
-        //
+       $mailable = new ContactMessageCreated($request->name, $request->email, $request->message);
+       Mail::to(config('larakisarr.admin_support_email'))->send($mailable);
+
+       Flashy::message('Welcome aboard!', 'http://your-awesome-link.com');
+
+       //flashy('Nous vous répondrons dans les plus brefs délais.');
+
+        return redirect()->route('root_path');
     }
 
     /**
