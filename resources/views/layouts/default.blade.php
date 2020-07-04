@@ -11,6 +11,8 @@
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;1,600&display=swap" rel="stylesheet"> 
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+        <link href="//fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700' rel='stylesheet'>
 
         <style>
             body{font-family: 'Open Sans', sans-serif;}
@@ -20,7 +22,11 @@
     <body>
         @include('layouts/partials/_nav')
         <div class="container">
-            
+            @if (session('status'))
+                <div class="alert alert-{{session('type')}} mt-4">
+                    {{ session('status') }}
+                </div>
+            @endif
             @yield('content')       
         </div>
         @include('layouts/partials/_footer')

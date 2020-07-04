@@ -6,7 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Requests\ContactRequest;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\ContactMessageCreated;
-use Flashy;
+use Session;
+use App\Models\Message;
 
 class ContactsController extends Controller
 {
@@ -38,14 +39,18 @@ class ContactsController extends Controller
      */
     public function store(ContactRequest $request)
     {
-       $mailable = new ContactMessageCreated($request->name, $request->email, $request->message);
+        //dd($request->only('name', 'email', 'message'));
+        $message = Message::create($request->only('name', 'email', 'message'));
+
+       $mailable = new ContactMessageCreated($message);
        Mail::to(config('larakisarr.admin_support_email'))->send($mailable);
 
-       Flashy::message('Welcome aboard!', 'http://your-awesome-link.com');
 
-       //flashy('Nous vous répondrons dans les plus brefs délais.');
+       //Flashy::message('Merci de votre engagement à nos côtés!');
 
-        return redirect()->route('root_path');
+       flashy('Nous vous répondrons dans les plus brefs délais.');
+
+        return redirect()->route('root_path')->with(['status'=> 'Message envoyé. Nous vous répondrons dans les plus brefs délais!', 'type' => 'warning']);
     }
 
     /**

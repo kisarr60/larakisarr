@@ -1,7 +1,11 @@
 @component('mail::message')
-# {{$name}} a écrit :
+# Message envoyé par :
+- Nom : {{$msg->name}}
+- Email : {{$msg->email}}
 
-{{$msg}}.
+@component('mail::panel')
+{{$msg->message}}.
+@endcomponent
 
 @component('mail::button', ['url' => '', 'color' => 'success'])
 Button Text

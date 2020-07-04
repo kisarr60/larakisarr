@@ -38,3 +38,6 @@ Route::post('/contact', [
 	'as' => 'contact_path',
 	'uses' => 'ContactsController@store'
 ]);
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
